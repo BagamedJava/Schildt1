@@ -11,6 +11,5 @@ public class TwoArray {
             }
             System.out.println();
         }
-        180
     }
 }
