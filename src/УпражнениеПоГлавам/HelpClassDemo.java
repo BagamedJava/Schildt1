@@ -41,6 +41,9 @@ public class HelpClassDemo {
                 System.out.println("Инструкция continue:\n");
                 System.out.println("continue; или continue метка;");
                 break;
+            case '8':
+                System.out.println("Инструкция for-each:\n");
+                System.out.println("for(тип итер_пер : коллекция) блок_инструкций");
         }
         System.out.println();
     }
@@ -52,11 +55,12 @@ public class HelpClassDemo {
         System.out.println(" 4. while");
         System.out.println(" 5. do-while");
         System.out.println(" 6. break");
-        System.out.println(" 7. continue\n");
+        System.out.println(" 7. continue");
+        System.out.println(" 8. for-each\n");
         System.out.print("Выберите (q - выход) : ");
     }
     boolean isvalid(int ch){
-        if (ch<'1'|ch>'7'&ch!='q') return false;
+        if (ch<'1'|ch>'8'&ch!='q') return false;
         else return true;
     }
 
