@@ -1,10 +1,9 @@
 package Chapter7;
 
 /*
-Простая иерархия классов.
-Этот класс описывает двумерные объекты
- */
-public class TwoDShape {
+Простай иерархия классов
+Класс, который описывает двумерные объекты:
+ */public class TwoDShape {
     double width;
     double height;
 
@@ -13,103 +12,57 @@ public class TwoDShape {
     }
 }
 
-/*
-Подкласс для представления треугольник
-Этот класс - производный от класса TwoDShape
- */
-
-class Triangle extends TwoDShape { // класс Triangle наследует класс TwoDShape
+//Подкласс для представления треугольников
+//производный от класса TwoDShape
+class Triangle extends TwoDShape {
     String style;
+    static int id = 0;
 
     double area() {
         return width * height / 2;
+    }
+
+    Triangle(double w, double h, String s) {
+        this.width = w;
+        this.height = h;
+        this.style = s;
+    }
+
+    void ShowTrinagle() {
+        id++;
+        System.out.println("Информация о t" + id);
+        System.out.println("Треугольник - " + style);
+        ShowDim();
+
+        double v = width * height / 2;
+        System.out.println("Площадь - " + v);
 
     }
 
-    void ShowStyle() {
-        System.out.println("Треугольник " + style);
-    }
-
-
-}
-
-class Shapes {
     public static void main(String[] args) {
-        Triangle t1 = new Triangle();
-        Triangle t2 = new Triangle();
-
-        t1.width = 4.0;
-        t1.height = 4.0;
-        t1.style = "закрашенный";
-
-        t2.style = "контурный"; // Объектам типа Triangle доступны все члены класса Triangle
-        t2.height = 12.0; // Даже те, которые унаследованы от класса TwoDShape
-        t2.width = 8.0;
-        System.out.println("Информация о t1: ");
-        t1.ShowStyle();
-        t1.ShowDim();
-        System.out.println("Площадь - " + t1.area());
+        Triangle t1 = new Triangle(4.0, 4.0, "закрашенный");
+        Triangle t2 = new Triangle(8.0, 12.0, "контурный");
+        t1.ShowTrinagle();
         System.out.println();
-
-        System.out.println("Информация о t2: ");
-        t2.ShowStyle();
-        t2.ShowDim();
-        System.out.println("Площадь - " + t2.area());
+        t2.ShowTrinagle();
 
     }
 }
-// Подкласс для представления прямоугольник, производный от класса TwoDShape
-class Rectangle extends TwoDShape{
-    boolean isSquare(){
-        if (width == height) return true;
+
+/*
+Супер-класс TwoDShape имеет доступ лишь к некоторым членам класса - width,height,showDim();
+Наследник же имеет доступ к style,area(),ShowTrinagle() и к членам супер-класса.
+ */
+class Rectangle extends TwoDShape {
+    boolean isSquare() {
+        if (width == height) {
+            System.out.println("Прямоугольник является квадратом");
+            return true;
+        } else System.out.println("Треугольник не является квадратом");
         return false;
     }
-    double area(){
+
+    double area() { // вычисляет площадь прямоугольника
         return width * height;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
