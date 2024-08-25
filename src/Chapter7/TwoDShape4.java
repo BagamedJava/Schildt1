@@ -36,5 +36,4 @@ class Triangle4 extends TwoDShape4{
         style = s;
     }
 // страница 275
-    double area()
 }
